@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.OrderInfoMapperInter">
+	
+   
+   <select id="selectLastOrderId" parameterType="String" resultType="int">
+   		Select Case when orderid is null or '' then 0 else orderid end as last_orderid 
+   		
+   		From orderinfo 
+   		
+   		where mid = #{mid} 
+   		
+   		order by orderid DESC 
+   		
+   		limit 1 
+   </select>
+   
+   <insert id="insertOrderInfo" parameterType="orderinfo">
+		insert into orderinfo 
+		(orderid, mid, pnum, oid, oquantity) 
+		values 
+		(#{orderId},#{mid},#{pnum},#{oid},#{oquantity})
+	</insert>
+   
+   
+   <select id="getOrderInfo" parameterType="Map" resultType="Map">
+	select * 
+	
+	from orderinfo oi 
+	join member m 
+	join product pr 
+	join poption po 
+
+	where oi.mid = m.mid
+	and oi.pnum = pr.pnum
+	and po.pnum = pr.pnum
+	and oi.oid = po.oid
+	
+	and m.mid = #{mid}
+	and oi.orderid = (select max(oi.orderid) from orderinfo)
+   </select>
+   <!-- and oi.oid = (select oid from orderinfo order by oid desc limt 1) -->
+   <!-- and oi.oid = (select max(oid) from orderinfo) -->
+   
+   
+   
+</mapper>

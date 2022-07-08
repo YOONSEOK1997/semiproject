@@ -2,7 +2,7 @@
 Bitcamp 903 SemiProject_HKCLH
 <br><br>
 
-<h3>Clone Coding :</h3> https://www.ranicake.com/main/index.php
+<h3>Clone Coding :</h3> https://paffem.me/
 
 <h3>Member:</h3>
 한별, 김정하, 최윤석, 이경주, 홍대한<br><br>

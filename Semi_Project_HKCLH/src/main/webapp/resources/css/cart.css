@@ -1,0 +1,238 @@
+@charset "UTF-8";
+
+
+div.cart-title {
+	width: 500px;
+	height: 100px;
+	margin: auto;
+	font-size: 60px;
+	text-align: center;
+	color:#444444;
+}
+
+
+  
+/* ----테이블 CSS---- */
+
+table {
+	margin: auto;
+	font-family: Noto Sans KR;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;
+}
+
+table.cart-table{
+	border-top:2px solid black;
+}
+
+th.th_width_1 {
+	width:0px;
+}
+
+table.cart-table tbody td.pname{
+	font-size: 25px;
+	font-weight: 550;
+}
+
+table.cart-table tbody td.poption{
+	font-size: 20px;
+	font-weight: 400;
+	color:#919090;
+}
+
+span.sum_price{
+	font-size: 20px;
+	font-weight: 400;
+}
+
+th.th_width_2{
+	width:190px;
+	font-size: 20px;
+	text-align: right;
+	font-weight: 550;
+}
+th.th_width_3{
+	width:200px;
+	font-size: 20px;
+	text-align: left;
+	color:black;
+}
+
+th.th_width_4{
+	width:200px;
+	font-size: 20px;
+	text-align: center;
+	font-weight: 550;
+}
+
+
+span#Cartdel{
+	color:#050552
+}
+
+table.all_price {
+	font-size: 18px;
+	width:1150px;
+	border-top:2px solid black;
+	border-bottom:0.1px solid  #444444;
+	text-align: center;
+}
+
+th {
+	height: 80px;
+}
+
+th.all_price_th{
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+td.cart_info_td{
+	width:0px;
+}
+
+tr{
+	text-align: center;
+	border-bottom: 1px solid #444444;
+	padding: 10px;
+}
+
+td {
+	height: 80px;
+	border-bottom: 1px solid #444444;
+	padding: 10px;
+}
+
+td.all_price_th4{
+	padding-right: 10px;
+}
+
+input#allcheck + label {
+	display: inline-block;
+	width: 50px;
+	height: 20px;
+	border: 2px solid #bcbcbc;
+	cursor: pointer;
+}
+
+
+
+
+/* 최종가격 div */
+
+div.total{
+	width: 100%;
+	height: 300px;
+	margin: auto;
+	text-align: center;
+	background-color: pink;
+}
+
+div.total-head{
+	margin: auto;
+	width:1200px;
+	hight:100px;
+	line-height:100px;
+}
+
+div.total-body{
+	margin: auto;
+	width:1200px;
+	hight:100px;
+	line-height:100px;
+}
+
+
+div.total-1{
+	border:1px solid white;
+	float:left;
+	width:225px;
+}
+
+div.total-2{
+	border:1px solid white;
+	float:left;
+	width:100px;
+}
+
+/*주문하기 버튼*/
+div.buybtn {
+	width: 800px;
+	height: 60px;
+	background-color: black;
+	padding: 8px;
+	margin: auto;
+	cursor: pointer;
+	text-align: center;
+	font-size: 30px;
+	color: white;
+}
+
+
+
+/*수량추가 input box*/
+#quantity{
+	width: 100px; 
+}
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.number-input {
+  border: 1px solid #ddd;
+  display: inline-flex;
+  
+}
+
+.number-input,
+.number-input * {
+  box-sizing: border-box;
+  width: 100px;
+}
+
+.number-input button {
+  outline:none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  margin: 0;
+  position: relative;
+  font-size: 10px;
+}
+
+.number-input button:after {
+  display: inline-block;
+  position: absolute;
+  font-family: "Font Awesome 5 Free"; 
+  font-weight: 900;
+  content: '\f077';
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+.number-input button.plus:after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.number-input input[type=number] {
+  font-family: sans-serif;
+  max-width: 5rem;
+  padding: .5rem;
+  border: 1px solid #ddd;
+  border-width: 0 1px;
+  font-size: 1.3rem;
+  height: 3rem;
+  font-weight: bold;
+  text-align: center;
+}

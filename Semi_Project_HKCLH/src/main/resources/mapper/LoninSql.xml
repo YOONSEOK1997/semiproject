@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.LoginMapperInter">
+	<select id="findmId" resultType="String" parameterType="String">
+		select mid from member where mname=#{mName} and memail=#{mEmail}
+	</select>
+	
+	<select id="findmPassword" resultType="String" parameterType="String">
+		select mpassword from member where mid=#{mId} and mname=#{mName} and memail=#{mEmail}
+	</select>
+	
+
+</mapper>

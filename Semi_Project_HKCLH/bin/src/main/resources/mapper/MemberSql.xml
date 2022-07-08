@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="data.mapper.MemberMapperInter">
+	<insert id="insertMember" parameterType="member">
+		insert into member (mid,mname,mbirth,mpassword,mpost,mphone,maddress,mdate,memail)
+		 values (#{mId},#{mName},#{mBirth},#{mPassword},#{mPost},#{mPhone},#{mAddress},now(),#{mEmail})
+	</insert>
+	
+	<select id="login" parameterType="Map" resultType="int">
+		select count(*) from member where mid=#{mId} and mpassword=#{mPassword}
+	</select>
+	
+	<select id="getmName" parameterType="String" resultType="String">
+		select mname from member where mid=#{mId}
+	</select>
+	
+	
+	
+</mapper>

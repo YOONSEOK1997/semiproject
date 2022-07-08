@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.CartMapperInter">
+	<!-- Semi Product -->
+	
+	
+	
+   <insert id="insertCart" parameterType="cart">
+	insert into cart
+
+	(mid, pnum, cquantity)
+
+	values
+
+	('Testid', 2, 1);
+	<!-- ( #{mid}, #{pnum}, #{cquantity} ) -->
+   </insert>
+   
+   <select id="getAllCart" parameterType="Map" resultType="Map">
+	select c.cid, c.mid, c.pnum, c.cquantity, pr.pprice, po.oid, po.oname, pr.pname,
+	po.addprice, c.cquantity*(pr.pprice+po.addprice) AS SUM_PRICE
+	
+	from cart c
+	join member m
+	join product pr
+	join poption po
+
+	where c.mid = m.mid
+	and c.pnum = pr.pnum
+	and pr.oid = po.oid
+
+	and m.mid = #{mid};
+   </select>
+   
+   
+   <delete id="deleteCart" parameterType="cart">
+      delete from cart where cid = #{cid}
+   </delete>
+   
+</mapper>

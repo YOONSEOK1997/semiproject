@@ -1,0 +1,23 @@
+server:
+  port: 9002
+spring:
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/1231231
+#      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+      
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://semisemi.c6b0upyu6miu.ap-northeast-2.rds.amazonaws.com:3306/semisemi?serverTimeZone=Asia/Seoul
+    username: admin
+    password: 123456789
+    
+#mybatis
+mybatis:
+  type-aliases-package: data.mapper,data.dto
+  mapper-locations:
+  - /mapper/**/*.xml

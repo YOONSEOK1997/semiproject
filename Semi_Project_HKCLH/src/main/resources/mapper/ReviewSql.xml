@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data.mapper.ReviewMapperInter">
+
+<!-- INSERT -->
+	<insert id="insertReview" parameterType="review">
+		insert into review
+		(rnum, pnum, rrate, mid, rcontent, rphoto, rdate) values
+		(#{rnum}, #{pnum}, #{rrate}, #{mid}, #{rcontent},#{rphoto}, now()
+		)
+	</insert>
+
+
+<!-- 수정 -->
+	<select id="getReview" parameterType="int" resultType="review">
+		select *
+		from review where rnum = #{rnum}
+	</select>
+
+
+<!-- 삭제 -->
+	<delete id="deleteReview" parameterType="int">
+		delete from review where
+		rnum=#{rnum}
+	</delete>
+
+<!-- LIST -->
+	<select id="getReviewList" resultType="review">
+		select * from review order by rnum desc
+	</select>
+
+	<select id="getmIdReviewList" parameterType="String" resultType="review">
+		select * from review 
+		
+		join product
+		
+		where mid=#{mid}
+		and product.pnum=review.pnum
+	</select>
+
+
+	<!-- 전체 review list -->
+	<select id="getPnumReviewList" resultType="review">
+		select * 
+		
+		from review 
+		
+		join product
+		join member
+		
+		where product.pnum = review.pnum 
+		and member.mid = review.mid 
+		
+		order by rnum desc
+		
+	</select>
+	
+	<select id="getPnumReviewListHB" parameterType="int" resultType="review">
+		select * 
+		
+		from review 
+		
+		join product
+		
+		where product.pnum = review.pnum 
+		
+		
+	</select>
+
+
+	<!-- pnumlist 전체 list -->
+	<select id="getPnumList" resultType="int">
+		select product.pnum
+		
+		from review 
+		
+		join product
+		join member
+		
+		where product.pnum = review.pnum 
+		and member.mid = review.mid group by product.pnum
+	</select>
+	
+	<!-- 안쪽 list (상품별 table) -->
+	<select id="getPnumReviewPartList" resultType="review" parameterType="int">
+		select * 
+		
+		from review 
+		
+		join product
+		join member
+		
+		where product.pnum = review.pnum 
+		and member.mid = review.mid and product.pnum=#{pnum} group by product.pnum
+		
+	</select>
+	
+		<!-- 안쪽 list (상품별 table) -->
+	<select id="getPnumReviewPartList2" resultType="review" parameterType="int">
+		select * 
+		
+		from review 
+		
+		join product
+		join member
+		
+		where product.pnum = review.pnum 
+		and member.mid = review.mid 
+		limit 3
+	</select>
+
+	
+
+	<!-- 총 리뷰 갯수 -->
+
+   <select id="getTotalReviewCount" resultType="int">
+      select count(*) from review
+   </select>	
+   
+   	<!-- pnum review table 들어가는 부분  -->
+   	
+   <!-- 상품별 총 리뷰 갯수 -->
+      <select id="getTotalPnumReviewCount" resultType="int">
+     select count(*) from  review where pnum = ${pnum} group by pnum;
+   </select>
+   
+   
+   <!-- 평균 별점 계산 -->
+	<select id="getAvgRrate" resultType="review" parameterType="int">
+		select pnum, AVG(rrate) from review where pnum = ${pnum};
+	</select>
+
+
+	<!-- 리뷰 3줄씩만 가져오기 -->
+	<select id = "get3ReviewsList" resultType="review">
+ 		select pnum, rcontent from review where pnum = ${pnum} limit 3 ;
+	</select>
+
+
+	</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="data.mapper.PayMapperInter">
+
+	<insert id="insertPay" parameterType="Pay">
+		insert into pay (mid, pydate, pnum, oid, pyquantity)
+		 values (#{mid}, now(), #{pnum}, #{oid}, #{pyquantity})
+	</insert>
+	
+   <delete id="deleteOrderinfo">
+      delete from orderinfo where mid=#{mId}
+   </delete>
+   
+   <delete id="deleteCart">
+      delete from cart where mid=#{mId}
+   </delete>
+   
+   <select id="getmyPay" resultType="Pay" parameterType="String">
+	  select * 
+	  
+	  from pay  
+	  
+	  join product
+	  join poption 
+	  
+	  where pay.pnum = product.pnum 
+	  and pay.oid = poption.oid 
+	  
+	  and mid=#{mId}
+	  group by payid
+	  order by payid desc
+	  
+   </select>
+   
+</mapper>
